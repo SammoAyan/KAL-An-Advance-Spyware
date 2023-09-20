@@ -39,12 +39,12 @@ microphone_time = 2
 time_iteration = 8
 number_of_iterations_end = 2
 
-email_address = "ecomapp55@gmail.com"
-password = "xtmdqynwqxipntim"
+email_address = "xxxx@gmail.com"
+password = "xxxx"
 
 username = getpass.getuser()
 
-toaddr = "ecomapp55@gmail.com"
+toaddr = "xxxx@gmail.com"
 
 
 
